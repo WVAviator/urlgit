@@ -52,7 +52,6 @@ export class UrlsService {
   }
 
   async getUrlRedirect(urlCode: string) {
-    console.log(`Checking the database for URL code: ${urlCode}`);
     const url = await this.urlRepository.findOne({ where: { urlCode } });
     if (!url) {
       throw new NotFoundException(
@@ -63,13 +62,19 @@ export class UrlsService {
   }
 
   async remove(id: number, userId: number) {
-    const url = await this.urlRepository.findOne({ where: { id } });
+    const url = await this.findOne(id, userId);
+    console.log('Found url: ', url);
+
     if (!url) {
       throw new NotFoundException('Url not found');
     }
     if (url.user.id !== userId) {
       throw new UnauthorizedException('Url registered to another user');
     }
-    return this.urlRepository.delete(url);
+    console.log('Deleting url: ', url);
+
+    await this.urlRepository.delete(id);
+    console.log('Deleted url: ', url);
+    return url;
   }
 }

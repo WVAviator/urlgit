@@ -20,7 +20,10 @@ export class Url {
   @Column()
   urlCode: string;
 
-  @ManyToOne(() => User, (user) => user.urls)
+  @ManyToOne(() => User, (user) => user.urls, {
+    eager: true,
+    onDelete: 'CASCADE',
+  })
   user: User;
 
   @OneToMany(() => Redirect, (redirect) => redirect.url, {

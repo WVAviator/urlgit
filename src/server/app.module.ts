@@ -8,7 +8,8 @@ import { UsersModule } from './users/users.module';
 import { UrlsModule } from './urls/urls.module';
 import { RerouteModule } from './reroute/reroute.module';
 import { RedirectsModule } from './redirects/redirects.module';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
@@ -23,6 +24,10 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
       Next({ dev: process.env.NODE_ENV !== 'production' }),
       { viewsDir: null },
     ),
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10,
+    }),
     AuthModule,
     UsersModule,
     UrlsModule,
@@ -34,6 +39,10 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     {
       provide: APP_INTERCEPTOR,
       useClass: ClassSerializerInterceptor,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
     },
   ],
 })

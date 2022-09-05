@@ -3,8 +3,9 @@ import { Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ExtractJwt } from 'passport-jwt';
+import { Request } from 'express';
 
-const cookieExtractor = (req: any) => {
+const cookieExtractor = (req: Request) => {
   let token = null;
   if (req && req.signedCookies) {
     token = req.signedCookies['urlgit_access_token'];
@@ -15,8 +16,6 @@ const cookieExtractor = (req: any) => {
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private usersService: UsersService) {
-    console.log('JWT Strategy');
-
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
       ignoreExpiration: false,

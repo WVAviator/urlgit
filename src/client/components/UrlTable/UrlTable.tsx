@@ -11,12 +11,16 @@ import {
   Thead,
   Tr,
 } from '@chakra-ui/react';
+import { FiTrash2 } from 'react-icons/fi';
 import React from 'react';
+import { useSWRConfig } from 'swr';
 
 const UrlTable = ({ urls }) => {
   if (!urls) {
     return <Spinner />;
   }
+
+  const { mutate } = useSWRConfig();
 
   return (
     <TableContainer>
@@ -26,6 +30,7 @@ const UrlTable = ({ urls }) => {
             <Th maxWidth="10rem">Long URL</Th>
             <Th>Short URL</Th>
             <Th isNumeric>Uses</Th>
+            <Th></Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -58,6 +63,17 @@ const UrlTable = ({ urls }) => {
                   </Flex>
                 </Td>
                 <Td isNumeric>{url.redirects.length}</Td>
+                <Td>
+                  <FiTrash2
+                    cursor={'pointer'}
+                    onClick={async () => {
+                      await fetch(`/urls/${url.id}`, {
+                        method: 'DELETE',
+                      });
+                      mutate('/urls');
+                    }}
+                  />
+                </Td>
               </Tr>
             );
           })}

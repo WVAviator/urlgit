@@ -37,21 +37,21 @@ const Features = () => {
           icon={<Icon as={FcAlphabeticalSortingAz} w={10} h={10} />}
           title={'Shorten URLs'}
           text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
+            'To create a new URL, simply enter the URL you want to shorten and click the "Create New" button.'
           }
         />
         <Feature
           icon={<Icon as={FcLink} w={10} h={10} />}
           title={'Monitor usage'}
           text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
+            "Get insights into the number of clicks for each of the shortened links you've created."
           }
         />
         <Feature
           icon={<Icon as={FcStatistics} w={10} h={10} />}
           title={'Analyze traffic'}
           text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
+            '-This feature is under construction- View trends regarding usage including usage over time, approximate user location, and the referring web address.'
           }
         />
       </SimpleGrid>

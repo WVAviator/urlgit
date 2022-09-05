@@ -7,7 +7,7 @@ export class Redirect {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Url, (url) => url.redirects)
+  @ManyToOne(() => Url, (url) => url.redirects, { onDelete: 'CASCADE' })
   url: Url;
 
   @Transform(({ value }) => value.toISOString())
