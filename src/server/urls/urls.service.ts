@@ -36,16 +36,8 @@ export class UrlsService {
         },
       },
     });
-    console.log('Fetched urls: ', urls);
 
-    return urls.map((url) => ({
-      ...url,
-      shortUrl: `${process.env.BASE_URL}/${url.urlCode}`,
-      redirects: url.redirects.map((redirect) => ({
-        ...redirect,
-        dateTime: redirect.dateTime.toISOString(),
-      })),
-    }));
+    return urls;
   }
 
   async findOne(id: number, userId: number) {

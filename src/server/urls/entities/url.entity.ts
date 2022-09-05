@@ -7,6 +7,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Expose } from 'class-transformer';
 
 @Entity()
 export class Url {
@@ -26,4 +27,9 @@ export class Url {
     eager: true,
   })
   redirects: Redirect[];
+
+  @Expose()
+  get shortUrl(): string {
+    return `${process.env.BASE_URL}/${this.urlCode}`;
+  }
 }

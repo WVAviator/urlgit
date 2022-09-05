@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
   Link,
   IconButton,
@@ -22,25 +21,26 @@ import { User } from 'src/shared/types';
 import { useRouter } from 'next/router';
 import Logo from '../Logo/Logo';
 
-const Links = ['Dashboard'];
+const Links = [['Dashboard', '/dashboard']];
 
 interface HeaderProps {
   user: User;
 }
 
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.700', 'gray.700'),
-    }}
-    href={'#'}
-  >
-    {children}
-  </Link>
+const NavLink = ({ children, href }: { children: ReactNode; href: string }) => (
+  <NextLink href={href} passHref>
+    <Link
+      px={2}
+      py={1}
+      rounded={'md'}
+      _hover={{
+        textDecoration: 'none',
+        bg: 'gray.700',
+      }}
+    >
+      {children}
+    </Link>
+  </NextLink>
 );
 
 const Header: React.FC<HeaderProps> = ({ user }) => {
@@ -66,10 +66,12 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
         {user.email}
       </MenuButton>
       <MenuList bg="gray.700">
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>Settings</MenuItem>
+        <MenuItem _hover={{ bg: 'gray.500' }}>Profile</MenuItem>
+        <MenuItem _hover={{ bg: 'gray.500' }}>Settings</MenuItem>
         <MenuDivider />
-        <MenuItem onClick={signOut}>Sign Out</MenuItem>
+        <MenuItem _hover={{ bg: 'gray.500' }} onClick={signOut}>
+          Sign Out
+        </MenuItem>
       </MenuList>
     </Menu>
   ) : (
@@ -137,7 +139,9 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
               display={{ base: 'none', md: 'flex' }}
             >
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link[0]} href={link[1]}>
+                  {link[0]}
+                </NavLink>
               ))}
             </HStack>
           </HStack>
@@ -148,7 +152,9 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link[0]} href={link[1]}>
+                  {link[0]}
+                </NavLink>
               ))}
             </Stack>
           </Box>

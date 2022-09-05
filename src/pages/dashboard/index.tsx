@@ -25,26 +25,13 @@ import useSWR, { useSWRConfig } from 'swr';
 
 interface DashboardProps {
   currentUser: User;
-  urls: Url[];
 }
 
-const Dashboard: NextPage<DashboardProps> = ({
-  currentUser,
-  urls: initialUrls,
-}) => {
-  const [urls, setUrls] = React.useState(initialUrls);
-
+const Dashboard: NextPage<DashboardProps> = ({ currentUser }) => {
   const { data, error } = useSWR('/urls', async () => {
     return fetch('/urls').then((res) => res.json());
   });
-
   const { mutate } = useSWRConfig();
-
-  // const onNewUrlCreated = async () => {
-  //   const res = await fetch('/urls');
-  //   const urls = await res.json();
-  //   setUrls(urls);
-  // };
 
   return (
     <PageLayout user={currentUser}>
@@ -55,14 +42,11 @@ const Dashboard: NextPage<DashboardProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { currentUser, urls } = context.query;
-
-  console.log(urls);
+  const { currentUser } = context.query;
 
   return {
     props: {
       currentUser,
-      urls,
     },
   };
 };

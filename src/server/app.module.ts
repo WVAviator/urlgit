@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { ClassSerializerInterceptor, Module } from '@nestjs/common';
 import Next from 'next';
 import { RenderModule } from 'nest-next';
 import { AppController } from './app.controller';
@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { UrlsModule } from './urls/urls.module';
 import { RerouteModule } from './reroute/reroute.module';
 import { RedirectsModule } from './redirects/redirects.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -29,5 +30,11 @@ import { RedirectsModule } from './redirects/redirects.module';
     RedirectsModule,
   ],
   controllers: [AppController],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ClassSerializerInterceptor,
+    },
+  ],
 })
 export class AppModule {}

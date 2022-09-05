@@ -1,5 +1,6 @@
 import { Url } from '../../urls/entities/url.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class User {
@@ -9,6 +10,7 @@ export class User {
   @Column()
   email: string;
 
+  @Exclude()
   @Column({ select: false })
   password: string;
 

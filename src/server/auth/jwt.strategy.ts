@@ -27,8 +27,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: any) {
     const user = await this.usersService.findById(payload.sub);
 
-    console.log('Validating user JWT: ', user);
-
     if (!user) {
       throw new UnauthorizedException(
         'Login information incorrect or user does not exist.',

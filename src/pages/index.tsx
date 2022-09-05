@@ -2,6 +2,7 @@ import { Center, Container } from '@chakra-ui/react';
 import { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Features from 'src/client/components/Features/Features';
 import NewUrlForm from 'src/client/components/NewUrlForm/NewUrlForm';
 import PageLayout from 'src/client/components/PageLayout/PageLayout';
 import { User } from 'src/shared/types';
@@ -23,12 +24,11 @@ const HomePage: NextPage<HomePageProps> = ({ currentUser }) => {
 
   return (
     <PageLayout user={currentUser}>
-      <Container centerContent>
-        <NewUrlForm
-          onNewUrlCreated={onNewUrlCreated}
-          onNewUrlFailed={onNewUrlFailed}
-        />
-      </Container>
+      <NewUrlForm
+        onNewUrlCreated={onNewUrlCreated}
+        onNewUrlFailed={onNewUrlFailed}
+      />
+      <Features />
     </PageLayout>
   );
 };

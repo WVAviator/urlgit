@@ -22,11 +22,17 @@ export class RedirectsService {
     return this.redirectRepository.save(redirect);
   }
 
-  findAll() {
-    return `This action returns all redirects`;
+  findAll(urlId: number) {
+    return this.redirectRepository.find({
+      where: {
+        url: {
+          id: urlId,
+        },
+      },
+    });
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} redirect`;
+    return this.redirectRepository.findOne({ where: { id } });
   }
 }

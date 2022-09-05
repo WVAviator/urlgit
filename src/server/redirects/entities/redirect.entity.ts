@@ -1,5 +1,6 @@
 import { Url } from './../../urls/entities/url.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Transform } from 'class-transformer';
 
 @Entity()
 export class Redirect {
@@ -9,6 +10,7 @@ export class Redirect {
   @ManyToOne(() => Url, (url) => url.redirects)
   url: Url;
 
+  @Transform(({ value }) => value.toISOString())
   @Column()
   dateTime: Date;
 
