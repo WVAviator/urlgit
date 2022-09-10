@@ -1,7 +1,7 @@
 import { User } from './../users/entities/user.entity';
 import { AuthService } from './auth.service';
-import { LocalAuthGuard } from './local-auth.guard';
-import { JwtAuthGuard } from './jwt-auth.guard';
+import { LocalAuthGuard } from './guards/local-auth.guard';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import {
   Body,
   Controller,
@@ -13,7 +13,7 @@ import {
 } from '@nestjs/common';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 import { Response } from 'express';
-import { CurrentUser } from './currentuser.decorator';
+import { CurrentUser } from './decorators/currentuser.decorator';
 
 @Controller('auth')
 export class AuthController {

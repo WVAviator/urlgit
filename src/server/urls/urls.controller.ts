@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { UrlsService } from './urls.service';
 import { CreateUrlDto } from './dto/create-url.dto';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { CurrentUser } from '../auth/currentuser.decorator';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { CurrentUser } from '../auth/decorators/currentuser.decorator';
 import { UrlTransformPipe } from './url-transform.pipe';
 import { Throttle } from '@nestjs/throttler';
 

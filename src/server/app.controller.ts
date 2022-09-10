@@ -1,8 +1,8 @@
 import { Controller, Get, Render, UseFilters, UseGuards } from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
-import { CurrentUser } from './auth/currentuser.decorator';
-import { JwtAuthGuard } from './auth/jwt-auth.guard';
-import { UnauthorizedExceptionFilter } from './auth/unauthorized.filter';
+import { CurrentUser } from './auth/decorators/currentuser.decorator';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { UnauthorizedExceptionFilter } from './auth/filters/unauthorized.filter';
 import { UrlsService } from './urls/urls.service';
 
 @Controller()
