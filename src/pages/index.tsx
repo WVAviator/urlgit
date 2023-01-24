@@ -1,6 +1,5 @@
-import { Center, Container } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 import { GetServerSideProps, NextPage } from 'next';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import NewUrlForm from 'src/client/components/NewUrlForm/NewUrlForm';
 import PageLayout from 'src/client/components/PageLayout/PageLayout';

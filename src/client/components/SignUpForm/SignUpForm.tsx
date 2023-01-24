@@ -1,21 +1,14 @@
 import {
-  Flex,
   Box,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  HStack,
-  InputRightElement,
-  Stack,
   Button,
+  Flex,
   Heading,
+  Link,
+  Stack,
   Text,
   useColorModeValue,
-  Link,
 } from '@chakra-ui/react';
-import { HTMLAttributes, useState } from 'react';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { HTMLAttributes } from 'react';
 
 interface SignUpFormProps extends HTMLAttributes<HTMLFormElement> {
   children: React.ReactNode;
@@ -34,7 +27,6 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
   return (
     <form {...rest}>
       <Flex
-        minH={'100vh'}
         align={'center'}
         justify={'center'}
         bg={useColorModeValue('gray.50', 'gray.800')}

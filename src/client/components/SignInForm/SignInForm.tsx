@@ -1,14 +1,11 @@
 import {
-  Flex,
   Box,
-  FormControl,
-  FormLabel,
-  Input,
-  Checkbox,
-  Stack,
-  Link,
   Button,
+  Checkbox,
+  Flex,
   Heading,
+  Link,
+  Stack,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -31,7 +28,6 @@ const SignInForm: React.FC<SignInFormProps> = ({
   return (
     <form {...rest}>
       <Flex
-        minH={'100vh'}
         align={'center'}
         justify={'center'}
         bg={useColorModeValue('gray.50', 'gray.800')}

@@ -19,9 +19,13 @@ const UrlTable = ({ urls }) => {
   }
 
   return (
-    <TableContainer>
+    <TableContainer
+      fontSize={['xx-small', 'x-small', 'small', 'medium']}
+      width={['90vw']}
+      overflowX="scroll"
+    >
       <Table variant="simple">
-        <Thead>
+        <Thead maxWidth={['90vw']}>
           <Tr>
             <Th maxWidth="10rem">Long URL</Th>
             <Th>Short URL</Th>
@@ -36,12 +40,12 @@ const UrlTable = ({ urls }) => {
                   {url.destinationUrl}
                 </Td>
                 <Td>
-                  <Flex gap="1rem">
+                  <Flex gap={['0.25rem', '0.5rem', '0.75rem']}>
                     <Link
                       target="_blank"
                       rel="noopener noreferrer"
                       href={url.shortUrl}
-                      width="10rem"
+                      // width="10rem"
                     >
                       {url.shortUrl
                         .replace('http://', '')

@@ -1,25 +1,24 @@
-import { ReactNode } from 'react';
+import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import {
   Box,
-  Flex,
-  Avatar,
-  HStack,
-  Link,
-  IconButton,
   Button,
+  Flex,
+  HStack,
+  IconButton,
+  Link,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
   MenuDivider,
-  useDisclosure,
-  useColorModeValue,
+  MenuItem,
+  MenuList,
   Stack,
+  useColorModeValue,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
-import { User } from 'src/shared/types';
 import { useRouter } from 'next/router';
+import { ReactNode } from 'react';
+import { User } from 'src/shared/types';
 import Logo from '../Logo/Logo';
 
 const Links = ['Dashboard'];

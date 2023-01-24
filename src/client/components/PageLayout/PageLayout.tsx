@@ -1,13 +1,15 @@
 import React from 'react';
 import { User } from 'src/shared/types';
-import Header from '../header/Header';
+import Header from '../_Header/Header';
 
 interface PageLayoutProps {
-  children: React.ReactNode;
   user: User;
 }
 
-const PageLayout = ({ children, user }) => {
+const PageLayout: React.FC<React.PropsWithChildren<PageLayoutProps>> = ({
+  children,
+  user,
+}) => {
   return (
     <>
       <Header user={user} />

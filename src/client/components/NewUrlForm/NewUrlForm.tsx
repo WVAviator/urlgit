@@ -1,16 +1,15 @@
-import { FormEvent, ChangeEvent, useState } from 'react';
+import { CheckIcon } from '@chakra-ui/icons';
 import {
-  Stack,
-  FormControl,
-  Input,
   Button,
-  useColorModeValue,
-  Heading,
-  Text,
   Container,
   Flex,
+  FormControl,
+  Input,
+  Stack,
+  Text,
+  useColorModeValue,
 } from '@chakra-ui/react';
-import { CheckIcon } from '@chakra-ui/icons';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 interface NewUrlFormProps {
   onNewUrlCreated?: () => Promise<void>;
@@ -32,11 +31,11 @@ const NewUrlForm: React.FC<NewUrlFormProps> = ({
       align={'center'}
       justify={'center'}
       paddingBlock={10}
-      bg={useColorModeValue('gray.50', 'gray.800')}
+      // bg={useColorModeValue('gray.50', 'gray.800')}
     >
       <Container
         maxW={'lg'}
-        bg={useColorModeValue('white', 'whiteAlpha.100')}
+        // bg={useColorModeValue('white', 'whiteAlpha.100')}
         boxShadow={'xl'}
         rounded={'lg'}
         p={6}
